@@ -1,142 +1,158 @@
-🚦 SmartFlow – Traffic Prediction and Monitoring System
-📌 Introduction
+# 🚦 SmartFlow – Traffic Prediction and Monitoring System
 
-SmartFlow is a machine learning based system developed to analyze and predict traffic congestion at different road junctions. The goal of this project is to help visualize traffic patterns and provide predictions that can support smarter traffic management in urban areas.
+## Introduction
 
-The system uses a Random Forest classification model trained on a traffic dataset to predict the traffic level (Low, Medium, or High) based on time and location related features.
+SmartFlow is a machine learning based traffic prediction system designed to analyze traffic patterns and estimate congestion levels at different road junctions. The aim of this project is to provide a simple platform that can visualize traffic conditions and help in understanding how traffic changes over time.
 
-A web dashboard is also developed to display traffic predictions, analytics, and live traffic information in a simple and interactive interface.
+The system uses a Random Forest machine learning model trained on a traffic dataset to classify traffic levels as **Low, Medium, or High**. A web dashboard is also developed to display predictions, analytics, and traffic information in an interactive way.
 
-⚙️ Key Features
+---
 
-Machine learning based traffic prediction
+## Key Features
 
-Interactive dashboard for traffic monitoring
+* Traffic prediction using a machine learning model
+* Interactive dashboard for traffic monitoring
+* Data visualization using charts and graphs
+* Map interface showing different junctions
+* Admin panel to view logs and system statistics
+* REST API endpoints for predictions and analytics
 
-Visualization of traffic data using charts
+---
 
-Map interface showing different junctions
+## Technologies Used
 
-Admin panel for viewing system logs and statistics
+### Frontend
 
-API endpoints for accessing prediction and analytics data
+* Next.js
+* React.js
+* Tailwind CSS
+* Chart.js / Recharts
 
-🧰 Technologies Used
-Frontend
+### Backend
 
-Next.js
+* Python
+* FastAPI
 
-React.js
+### Machine Learning
 
-Tailwind CSS
+* Scikit-learn
+* Pandas
+* NumPy
 
-Chart.js / Recharts
+### Model
 
-Backend
+* Random Forest Classifier
 
-FastAPI
+---
 
-Python
+## Machine Learning Model
 
-Machine Learning
+The prediction model is trained using a traffic dataset.
 
-Scikit-learn
+**Input Features**
 
-Pandas
+* Hour
+* Day
+* Month
+* Junction
+* Weekend indicator
 
-NumPy
+**Output**
 
-Model
+* Traffic Level (Low / Medium / High)
 
-Random Forest Classifier
+The dataset was divided into **training and testing data** to evaluate the performance of the model.
 
-🧠 Machine Learning Approach
+---
 
-The prediction model is trained using traffic data collected from a Kaggle dataset.
+## Project Structure
 
-Input Features
-
-Hour
-
-Day
-
-Month
-
-Junction
-
-Weekend indicator
-
-Output
-
-Traffic Level (Low / Medium / High)
-
-The dataset was divided into training and testing sets to evaluate model performance.
-
-📁 Project Structure
+```
 smartflow-project/
 
-SmartFlow_Dashboard.html
-README.md
+├── SmartFlow_Dashboard.html
+├── README.md
 
-backend/
- ├── app.py
- ├── train_model.py
- ├── requirements.txt
- ├── model/
- │    ├── traffic_model.pkl
- │    └── stats.json
- └── dataset/
-      └── traffic.csv
+├── backend
+│   ├── app.py
+│   ├── train_model.py
+│   ├── requirements.txt
+│   ├── model
+│   │   ├── traffic_model.pkl
+│   │   └── stats.json
+│   └── dataset
+│       └── traffic.csv
 
-frontend/
- ├── pages/
- │    ├── index.tsx
- │    ├── map.tsx
- │    ├── dashboard.tsx
- │    └── admin.tsx
- ├── components/
- ├── styles/
- └── package.json
-🚀 Running the Project
-1️⃣ Start Backend
+└── frontend
+    ├── pages
+    │   ├── index.tsx
+    │   ├── map.tsx
+    │   ├── dashboard.tsx
+    │   └── admin.tsx
+    ├── components
+    ├── styles
+    └── package.json
+```
+
+---
+
+## How to Run the Project
+
+### 1. Run Backend
+
+```
 cd backend
 pip install -r requirements.txt
 python train_model.py
 uvicorn app:app --reload
+```
 
-Backend server runs at:
-
+Backend server will run at
 http://localhost:8000
-2️⃣ Start Frontend
+
+---
+
+### 2. Run Frontend
+
+```
 cd frontend
 npm install
 npm run dev
+```
 
-Frontend will run at:
-
+Frontend will run at
 http://localhost:3000
-📊 Dataset
 
-This project uses a traffic dataset obtained from Kaggle containing information about vehicle counts at different road junctions over time.
+---
 
-Dataset columns include:
+## Dataset
 
-DateTime
+This project uses a traffic dataset obtained from Kaggle which contains information about vehicle counts at different road junctions.
 
-Junction
+Dataset fields include:
 
-Vehicles
+* DateTime
+* Junction
+* Vehicles
+* ID
 
-ID
+---
 
-🔮 Future Improvements
+## Future Improvements
 
-Integration with live traffic APIs
+* Integration with live traffic APIs
+* Deployment on cloud platforms
+* Mobile-friendly dashboard
+* Improved prediction models
+* Real-time traffic monitoring
 
-Deployment on cloud platforms
+---
 
-Real-time data streaming
+## Author
 
-Mobile-friendly dashboard
-
-Improved prediction models using deep learning
+Vaibhav Vilas Datkhil
+B.Tech – Information Technology
+AISSMS Institute of Information Technology, Pune
+Prathmesh Rajesh Bawane
+M.Sc-Compter application
+Modern college , pune
