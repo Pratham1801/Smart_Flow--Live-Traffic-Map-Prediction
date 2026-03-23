@@ -1,156 +1,158 @@
-# SmartFlow AI — Traffic Prediction Smart City System
+# 🚦 SmartFlow – Traffic Prediction and Monitoring System
 
-![SmartFlow Banner](https://via.placeholder.com/1200x400/030712/00d4ff?text=SMARTFLOW+AI)
+## Introduction
 
-## 🚦 Overview
+SmartFlow is a machine learning based traffic prediction system designed to analyze traffic patterns and estimate congestion levels at different road junctions. The aim of this project is to provide a simple platform that can visualize traffic conditions and help in understanding how traffic changes over time.
 
-A production-grade AI-powered traffic prediction and smart city management dashboard built with Next.js 14, FastAPI, and RandomForest ML — trained on the Kaggle traffic dataset.
-
-**Live Demo:** Open `SmartFlow_Dashboard.html` in any browser — no server required!
+The system uses a Random Forest machine learning model trained on a traffic dataset to classify traffic levels as **Low, Medium, or High**. A web dashboard is also developed to display predictions, analytics, and traffic information in an interactive way.
 
 ---
 
-## ✨ Features
+## Key Features
 
-| Feature | Description |
-|---------|-------------|
-| 🤖 AI Prediction | RandomForest model with 89.1% accuracy |
-| 🗺️ Traffic Map | Interactive SVG map with real-time junction markers |
-| 📊 Dashboard | Animated smart city analytics with Chart.js |
-| 🔴 Traffic Light | Animated prediction display (Low/Medium/High) |
-| ⚡ Real-time | WebSocket + polling updates every 3-5 seconds |
-| 📋 Admin Panel | Logs, stats, alerts, feature importance |
+* Traffic prediction using a machine learning model
+* Interactive dashboard for traffic monitoring
+* Data visualization using charts and graphs
+* Map interface showing different junctions
+* Admin panel to view logs and system statistics
+* REST API endpoints for predictions and analytics
 
 ---
 
-## 🛠️ Tech Stack
+## Technologies Used
 
-```
-Frontend:  Next.js 14 + React 18 + Tailwind CSS + Framer Motion + Recharts
-Backend:   Python FastAPI + scikit-learn + pandas + numpy
-ML Model:  RandomForest Classifier (100 estimators, max_depth=10)
-Dataset:   Kaggle Traffic Prediction Dataset (5,000 records)
-Charts:    Chart.js 4 + Recharts 2
-Fonts:     Rajdhani (display) + Exo 2 (body) + JetBrains Mono (code)
-```
+### Frontend
 
----
+* Next.js
+* React.js
+* Tailwind CSS
+* Chart.js / Recharts
 
-## 🚀 Quick Start
+### Backend
 
-### Option 1: HTML Demo (No Installation)
-Simply open `SmartFlow_Dashboard.html` in your browser for a full demo.
+* Python
+* FastAPI
 
-### Option 2: Full Stack Development
+### Machine Learning
 
-**Backend:**
-```bash
-cd backend
-pip install -r requirements.txt
-python train_model.py       # Train the ML model
-uvicorn app:app --reload    # Start API on localhost:8000
-```
+* Scikit-learn
+* Pandas
+* NumPy
 
-**Frontend:**
-```bash
-cd frontend
-npm install
-echo "NEXT_PUBLIC_API_URL=http://localhost:8000" > .env.local
-npm run dev                 # Start on localhost:3000
-```
+### Model
+
+* Random Forest Classifier
 
 ---
 
-## 📁 Project Structure
+## Machine Learning Model
+
+The prediction model is trained using a traffic dataset.
+
+**Input Features**
+
+* Hour
+* Day
+* Month
+* Junction
+* Weekend indicator
+
+**Output**
+
+* Traffic Level (Low / Medium / High)
+
+The dataset was divided into **training and testing data** to evaluate the performance of the model.
+
+---
+
+## Project Structure
 
 ```
 smartflow-project/
-├── 📄 SmartFlow_Dashboard.html     ← Complete standalone demo
-├── 📄 README.md
-├── backend/
-│   ├── app.py                      ← FastAPI server (all endpoints)
-│   ├── train_model.py              ← ML model training script
-│   ├── requirements.txt            ← Python dependencies
-│   ├── model/
-│   │   ├── traffic_model.pkl       ← Trained RandomForest model
-│   │   └── stats.json              ← Dataset statistics
-│   └── dataset/
-│       └── traffic.csv             ← Kaggle dataset (place here)
-└── frontend/
-    ├── pages/
-    │   ├── index.tsx               ← Home / Prediction page
-    │   ├── map.tsx                 ← Live traffic map
-    │   ├── dashboard.tsx           ← Analytics dashboard
-    │   └── admin.tsx               ← Admin panel
-    ├── components/
-    │   ├── Navbar.tsx
-    │   ├── TrafficLight.tsx
-    │   └── StatCard.tsx
-    ├── styles/globals.css
-    ├── package.json
-    ├── tailwind.config.js
-    └── next.config.js
+
+├── SmartFlow_Dashboard.html
+├── README.md
+
+├── backend
+│   ├── app.py
+│   ├── train_model.py
+│   ├── requirements.txt
+│   ├── model
+│   │   ├── traffic_model.pkl
+│   │   └── stats.json
+│   └── dataset
+│       └── traffic.csv
+
+└── frontend
+    ├── pages
+    │   ├── index.tsx
+    │   ├── map.tsx
+    │   ├── dashboard.tsx
+    │   └── admin.tsx
+    ├── components
+    ├── styles
+    └── package.json
 ```
 
 ---
 
-## 🧠 ML Model Details
+## How to Run the Project
 
-- **Algorithm:** Random Forest Classifier
-- **Features:** Hour, Day, Month, Junction, IsWeekend (5 features)
-- **Target:** Traffic Level (Low / Medium / High)
-- **Dataset:** 5,000 records, 4 junctions
-- **Train/Test Split:** 80/20
-- **Accuracy:** 89.1%
+### 1. Run Backend
 
-### Feature Importance
-| Feature | Importance |
-|---------|-----------|
-| Hour | 38% |
-| Junction | 26% |
-| Month | 18% |
-| Day | 12% |
-| IsWeekend | 6% |
+```
+cd backend
+pip install -r requirements.txt
+python train_model.py
+uvicorn app:app --reload
+```
+
+Backend server will run at
+http://localhost:8000
 
 ---
 
-## 🌐 API Endpoints
+### 2. Run Frontend
 
-| Endpoint | Method | Description |
-|----------|--------|-------------|
-| `/predict` | GET | Predict traffic level |
-| `/traffic-live` | GET | Real-time junction data |
-| `/traffic-history` | GET | Historical traffic data |
-| `/analytics` | GET | City analytics data |
-| `/stats` | GET | Model/dataset statistics |
-| `/alerts` | GET | Active traffic alerts |
-| `/prediction-logs` | GET | Prediction history |
-| `/ws/traffic` | WebSocket | Live stream (3s interval) |
+```
+cd frontend
+npm install
+npm run dev
+```
 
-Full API docs available at: `http://localhost:8000/docs`
+Frontend will run at
+http://localhost:3000
 
 ---
 
-## 📊 Dataset
+## Dataset
 
-Place the Kaggle traffic dataset as `backend/dataset/traffic.csv`
+This project uses a traffic dataset obtained from Kaggle which contains information about vehicle counts at different road junctions.
 
-**Columns:** `DateTime, Junction, Vehicles, ID`
+Dataset fields include:
 
-**Source:** [Kaggle Traffic Prediction Dataset](https://www.kaggle.com/datasets/fedesoriano/traffic-prediction-dataset)
-
----
-
-## 📄 Report
-
-See `SmartFlow_AI_Traffic_Prediction_Report.docx` for the complete project report including:
-- Abstract, Introduction, Dataset Description
-- Data Preprocessing & Feature Engineering
-- ML Model Architecture & Results
-- System Architecture & API Documentation
-- Frontend Design & Animation System
-- Conclusions & Future Scope
+* DateTime
+* Junction
+* Vehicles
+* ID
 
 ---
 
-*Built with ❤️ for Smart City traffic management*
+## Future Improvements
+
+* Integration with live traffic APIs
+* Deployment on cloud platforms
+* Mobile-friendly dashboard
+* Improved prediction models
+* Real-time traffic monitoring
+
+---
+
+## Author
+
+Vaibhav Vilas Datkhil
+B.Tech – Information Technology
+AISSMS Institute of Information Technology, Pune
+Prathmesh Rajesh Bawane
+M.Sc-Compter application
+Modern college , pune
